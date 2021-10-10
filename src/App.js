@@ -1,15 +1,30 @@
-import Header from './Header';
-import './App.css';
-import gsap from 'gsap';
-import MainContent from './MainContent'
-function App() {
-  let timeline = gsap.timeline();
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Pages/Home';
+import Contact from './Pages/Contact';
+import './App.css'
+import Media from './Pages/MediaListing';
+import About from './Pages/About';
+
+export default function App() {
   return (
-    <div className="App">
-      <Header timeline= {timeline}/>
-      <MainContent timeline= {timeline}/>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route path="/About">
+            <About/>
+            </Route>
+           <Route path="/Media">
+            <Media />
+            </Route>
+           <Route path="/contact">
+            <Contact />
+            </Route>
+           <Route path="/">
+            <Home/>
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
-
-export default App;

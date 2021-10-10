@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from 'react'
-import background from './Images/background.jpg';
-import './MainContent.css'
+import background from '../Images/background.jpg';
+import '../Styles/MainContent.css'
+import { Link } from "react-router-dom";
 function MainContent({timeline}) {
     let bg = useRef(null)
     let contenth1 = useRef(null)
@@ -21,7 +22,7 @@ function MainContent({timeline}) {
                     Welcome 
                 </h1>
                 <p ref={el => contentp = el}>
-                     What we are about!
+                   <Link to="About">  What we are about! </Link>
                 </p>
             </div>
             <img src={background} alt="bg" className="background" ref={el => bg = el}/>

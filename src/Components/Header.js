@@ -1,5 +1,6 @@
 import React, {useRef, useEffect} from 'react'
-import './Header.css'
+import '../Styles/Header.css'
+import { NavLink } from "react-router-dom";
 
 
 function Header({timeline}) {
@@ -26,14 +27,14 @@ function Header({timeline}) {
                 </div>
                 <div className="menu">
                     <ul ref={el => menu_items = el}>
-                        <li>Home</li>
-                        <li>Media Listing</li>
-                        <li>Contact</li>
+                        <li><NavLink to="/" activeStyle={{color:"red"}}>Home</NavLink></li>
+                        <li><NavLink to="Media" activeStyle={{color:"red"}}>Media Listing</NavLink></li>
+                        <li><NavLink to="Contact" activeStyle={{ color:"red"}}>Contact</NavLink></li>
                     </ul>
                 </div>
             </div>
         </div>
     )
-}
+};
 
 export default Header
