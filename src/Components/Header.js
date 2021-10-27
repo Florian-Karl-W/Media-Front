@@ -1,55 +1,84 @@
-import React, { useRef, useEffect } from "react";
-import "../Styles/Header.css";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
-function Header({ timeline }) {
-  let logo = useRef(null);
-  let menu_items = useRef(null);
-  useEffect(() => {
-    timeline.from(logo, {
-      delay: 0.5,
-      duration: 1,
-      opacity: 0,
-      y: 100,
-    });
-    timeline.from(
-      menu_items,
-      {
-        duration: 1,
-        opacity: 0,
-        y: 100,
-      },
-      "-=.3"
-    );
+import { BiMenuAltRight } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
+
+import classes from "../styles/Header.module.scss";
+import { Link } from "react-router-dom";
+
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [size, setSize] = useState({
+    width: undefined,
+    height: undefined,
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (size.width > 768 && menuOpen) {
+      setMenuOpen(false);
+    }
+  }, [size.width, menuOpen]);
+
+  const menuToggleHandler = () => {
+    setMenuOpen((p) => !p);
+  };
+
   return (
-    <div>
-      <div className="header">
-        <div className="logo" ref={(el) => (logo = el)}>
-          L'Alternative
-        </div>
-        <div className="menu">
-          <ul ref={(el) => (menu_items = el)}>
+    <header className={classes.header}>
+      <div className={classes.header__content}>
+        <Link to="/" className={classes.header__content__logo}>
+          L'aternative
+        </Link>
+        <nav
+          className={`${classes.header__content__nav} ${
+            menuOpen && size.width < 768 ? classes.isMenu : ""
+          }`}
+        >
+          <ul>
             <li>
-              <NavLink exact to="/" activeStyle={{ color: "red" }}>
-                Home
-              </NavLink>
+              <Link to="/Magazines" onClick={menuToggleHandler}>
+                Magazines
+              </Link>
             </li>
             <li>
-              <NavLink to="Media" activeStyle={{ color: "red" }}>
-                Media Listing
-              </NavLink>
+              <Link to="/Videos" onClick={menuToggleHandler}>
+                Videos
+              </Link>
             </li>
             <li>
-              <NavLink to="Contact" activeStyle={{ color: "red" }}>
+              <Link to="/Paper" onClick={menuToggleHandler}>
+                Digital Paper
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" onClick={menuToggleHandler}>
                 Contact
-              </NavLink>
+              </Link>
             </li>
           </ul>
+        </nav>
+        <div className={classes.header__content__toggle}>
+          {!menuOpen ? (
+            <BiMenuAltRight onClick={menuToggleHandler} />
+          ) : (
+            <AiOutlineClose onClick={menuToggleHandler} />
+          )}
         </div>
       </div>
-    </div>
+    </header>
   );
-}
+};
 
 export default Header;

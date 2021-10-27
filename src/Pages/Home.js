@@ -1,13 +1,17 @@
-import Header from '../Components/Header';
-import gsap from 'gsap';
-import MainContent from '../Components/MainContent'
-export default function Home() {
-  let timeline = gsap.timeline();
+import Banner from "../components/Banner";
+import Categories from "../components/Categories";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+
+function Home() {
   return (
-    <div className="App">
-      <Header timeline= {timeline}/>
-      <MainContent timeline= {timeline}/>
+    <div className="">
+      <Header />
+      <Banner />
+      <Categories />
+      <Footer />
     </div>
   );
 }
 
+export default Home;

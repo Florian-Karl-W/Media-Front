@@ -1,17 +1,11 @@
-import Header from "../Components/Header";
-import gsap from "gsap";
-import ContactPage from "../Components/ContactPage";
-import ContactForm from "../Components/ContactForm";
+import Header from "../components/Header";
 
-export default function Contact() {
-  let timeline = gsap.timeline();
+function Contact() {
   return (
-    <div className="App">
-      <Header timeline={timeline} />
-      <ContactPage />
-      <div>
-        <ContactForm />
-      </div>
+    <div className="">
+      <Header />
     </div>
   );
 }
+
+export default Contact;
