@@ -1,22 +1,37 @@
+import { useState } from "react";
+import items from "../Data/News";
+import Menu from "../components/Card";
+import Button from "../components/Filter";
 import Header from "../components/Header";
-import "../styles/styles.scss";
+
+const allCategories = ["All", ...new Set(items.map((item) => item.category))];
+
+console.log(allCategories);
 
 function Paper() {
+  const [menuItem, setMenuItem] = useState(items);
+  const [buttons] = useState(allCategories);
+
+  //Filter Function
+  const filter = (button) => {
+    if (button === "All") {
+      setMenuItem(items);
+      return;
+    }
+
+    const filteredData = items.filter((item) => item.category === button);
+    setMenuItem(filteredData);
+  };
+
   return (
-    <div className="">
+    <div className="App">
       <Header />
-      <section>
-        <div className="banner">
-          <div className="container">
-            <div className="row">
-              <div className="main-text">Paper</div>
-            </div>
-            <div className="scroll">
-              <span>Scroll down</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="title">
+        <h1>Find your Pick</h1>
+      </div>
+
+      <Button button={buttons} filter={filter} />
+      <Menu menuItem={menuItem} />
     </div>
   );
 }

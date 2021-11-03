@@ -27,10 +27,7 @@ function Magazines() {
     <div className="App">
       <Header />
       <div className="title">
-        <h1>
-          Portfolio
-          <span> Filter</span>
-        </h1>
+        <h1>Find your Pick</h1>
       </div>
 
       <Button button={buttons} filter={filter} />

@@ -7,13 +7,13 @@ function Footer() {
             <a href="#hero">Home</a>
           </li>
           <li>
-            <a href="#about">About Us</a>
+            <a href="#about">Magazines</a>
           </li>
           <li>
-            <a href="#services">Services</a>
+            <a href="#services">Videos</a>
           </li>
           <li>
-            <a href="#team">Team</a>
+            <a href="#team">Digital Paper</a>
           </li>
           <li>
             <a href="#contact-us">Contact Us</a>
