@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
-
+import MainCategoriesService from "../main-categories.service";
 function Categories() {
+  MainCategoriesService.getMainCategories()
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
   return (
     <section class="categories">
       <h2>Our Categories</h2>
@@ -27,4 +35,5 @@ function Categories() {
     </section>
   );
 }
+
 export default Categories;

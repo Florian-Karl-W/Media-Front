@@ -3,10 +3,10 @@ import React from "react";
 function Filter({ button, filter }) {
   return (
     <div className="buttons">
-      {button.map((cat, i) => {
+      {button.map((Subcat, i) => {
         return (
-          <button type="button" onClick={() => filter(cat)} className="btn">
-            {cat}
+          <button type="button" onClick={() => filter(Subcat)} className="btn">
+            {Subcat}
           </button>
         );
       })}

@@ -1,7 +1,7 @@
 function Banner() {
   return (
     <section class="banner">
-      <div className="main-text">L'Aternative</div>
+      <div className="main-text">L'Alternative</div>
 
       <div className="scroll">
         <span>Scroll down</span>
